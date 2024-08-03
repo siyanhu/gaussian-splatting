@@ -1,0 +1,192 @@
+ssh -L 9222:localhost:9222 xrim@143.89.76.13
+
+ssh -o ProxyJump=ming@dsail2.cs.dartmouth.edu -L 9222:localhost:9222 ming@dsail2.cs.dartmouth.edu
+
+ssh -o ProxyJump=ming@mms-large-2.cs.dartmouth.edu -L 9222:localhost:9222 ming@mms-large-2.cs.dartmouth.edu
+
+node --inspect=0.0.0.0:9222 app.js
+
+ssh xrim@143.89.76.13 Local.123
+ssh ming@dsail2.cs.dartmouth.edu ming
+ssh ming@mms-large-2.cs.dartmouth.edu ming
+
+/mnt/ssd/ming/gpt_finetune/3dgs
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting
+
+cat isd-file.pub
+cd ssh
+touch authorized_keys
+chmod 600 authorized_keys
+vim authorized_keys
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/HongKong/arkit/colmap/atrium \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/data/atrium
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/3dgs_dataset_current_20240207/scene_concourse \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/data/scene_concourse
+
+scp -r xrim@143.89.76.13:/home/data/HongKong /home/siyanlinux/Documents/HongKong/backup
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/3dgs_dataset_current_20240207/scene_concourse \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_concourse
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_concourse/test_full_byorder_59-0 \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_concourse/test_full_byorder_59-0
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_concourse/test_full_byorder_59-1 \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_concourse/test_full_byorder_59-1
+
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/3dgs_dataset_upload_20240212/scene_ShopFacade \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_ShopFacade
+
+scp -r /home/siyanlinux/Documents/gaussian-splatting shuas@superpod.ust.hk:/home/shuas/Documents/
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_fire \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_fire
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_concourse \
+/home/siyanlinux/Documents/datasets/HongKong/scene_concourse
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/datasets/HongKong/full_arcore/colmap_rebuild_sfm \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/HongKong/
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_chess \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_chess
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_fire \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_fire
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/datasets/HongKong/full_arkit/colmap_rebuild_sfm/ \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/HongKong_arcore
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_heads \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_heads
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_redkitchen \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_kitchen
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_bar_hk \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_bar_hk
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /media/siyanlinux/Data/Hierarchical-Localization/cambridge/sampled/scene_KingsCollege/ \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_KingsCollege
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/repord/CAF/3dgs/gaussian-splatting
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /media/siyanlinux/Data/Hierarchical-Localization/cambridge/sampled/scene_KingsCollege \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/3dgs/gaussian-splatting/scene_KingsCollege
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /media/siyanlinux/Data/HongKong/full_arkit/colmap_rebuild_sfm \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/3dgs/gaussian-splatting/scene_KingsCollege
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/Scaffold-GS/ \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_chess \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold/data/scene_chess
+
+/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_pumpkin/test_full_byorder_59
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /media/siyanlinux/Data/Hierarchical-Localization/cambridge/sampled/scene_KingsCollege \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_KingsCollege
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /media/siyanlinux/Data/Hierarchical-Localization/cambridge/sampled/scene_KingsCollege/test_full_byorder_59 \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_KingsCollege/test_full_byorder_59
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /media/siyanlinux/Data/Hierarchical-Localization/cambridge/sampled/scene_ShopFacade/test_full_byorder_59 \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_ShopFacade/test_full_byorder_59
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /media/siyanlinux/Data/Hierarchical-Localization/cambridge/sampled/scene_OldHospital/test_full_byorder_59 \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_OldHospital/test_full_byorder_59
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /media/siyanlinux/Data/Hierarchical-Localization/cambridge/sampled/scene_StMarysChurch/test_full_byorder_59 \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_StMarysChurch/test_full_byorder_59
+
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_atrium \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_atrium
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_bar \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_bar
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_church \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_church
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_concourse \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_concourse
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_square \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_square
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_stairs \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_stairs
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/data_hkust_marvin.zip \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/data_hkust_marvin.zip
+
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_stairs/test_full_byorder_59/sparse/0/images.txt \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold_original/data/scene_stairs/test_full_byorder_59/sparse/0/images.txt
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/datasets/scene_stairs_7s/ \
+f006gzd@thor.cs.dartmouth.edu:/jumbo/jinlab/Ming/ECCV/reprod/CAF/Scaffold/data/scene_stairs_7s
+
+python render.py -s scene_siyan -m scene_siyan/output
+python train.py -s scene_siyan -m scene_siyan/output
+python convert.py -s scene_siyan
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting/scene_GreatCourt \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/gpt_finetune/3dgs/gaussian-splatting/scene_bar_hk
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/gaussian-splatting \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd/ming/3dgs_siyan/gaussian-splatting
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Downloads/Anaconda3-2024.02-1-Linux-x86_64.sh \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd2/ming/gpt_finetune/3dgs/backup
+
+scp -P 22 -o "ProxyJump xrim@143.89.76.13,ming@dsail2.cs.dartmouth.edu -p 22" \
+-r /home/siyanlinux/Documents/Scaffold-GS \
+ming@mms-large-2.cs.dartmouth.edu:/mnt/ssd2/ming/gpt_finetune/3dgs/Scaffold-GS

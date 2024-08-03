@@ -14,9 +14,23 @@ import traceback
 import socket
 import json
 from scene.cameras import MiniCam
+import random
+
+def is_port_in_use(port: int) -> bool:
+    import socket
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        return s.connect_ex(('localhost', port)) == 0
 
 host = "127.0.0.1"
-port = 6009
+port=random.randint(10000, 30000)
+port = 12345
+
+for port_num in range(10000, 30000):
+    if (is_port_in_use):
+        continue
+    else:
+        port = port_num
+        break
 
 conn = None
 addr = None

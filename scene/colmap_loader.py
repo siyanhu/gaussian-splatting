@@ -19,6 +19,8 @@ Camera = collections.namedtuple(
     "Camera", ["id", "model", "width", "height", "params"])
 BaseImage = collections.namedtuple(
     "Image", ["id", "qvec", "tvec", "camera_id", "name", "xys", "point3D_ids"])
+BaseImageDOF = collections.namedtuple(
+    "ImageDoF", ["id", "qvec", "tvec", "camera_id", "name"])
 Point3D = collections.namedtuple(
     "Point3D", ["id", "xyz", "rgb", "error", "image_ids", "point2D_idxs"])
 CAMERA_MODELS = {
@@ -38,7 +40,6 @@ CAMERA_MODEL_IDS = dict([(camera_model.model_id, camera_model)
                          for camera_model in CAMERA_MODELS])
 CAMERA_MODEL_NAMES = dict([(camera_model.model_name, camera_model)
                            for camera_model in CAMERA_MODELS])
-
 
 def qvec2rotmat(qvec):
     return np.array([
@@ -66,6 +67,10 @@ def rotmat2qvec(R):
     return qvec
 
 class Image(BaseImage):
+    def qvec2rotmat(self):
+        return qvec2rotmat(self.qvec)
+    
+class ImageDoF(BaseImageDOF):
     def qvec2rotmat(self):
         return qvec2rotmat(self.qvec)
 
@@ -168,7 +173,15 @@ def read_intrinsics_text(path):
                 elems = line.split()
                 camera_id = int(elems[0])
                 model = elems[1]
-                assert model == "PINHOLE", "While the loader support other types, the rest of the code assumes PINHOLE"
+                # if 'PINHOLE' in model:
+                #     model = 'PINHOLE'
+                # assert model == "PINHOLE", "While the loader support other types, the rest of the code assumes PINHOLE"
+                # 1 SIMPLE_PINHOLE 640 480 525.0 320.0 240.0
+                # 1 SIMPLE_RADIAL 1920 1440 1358.5261917623591 960 720 0.005736000698359567
+                if 'PINHOLE' in model:
+                    model = 'PINHOLE'
+                elif'RADIAL' in model:
+                    model = 'RADIAL'
                 width = int(elems[2])
                 height = int(elems[3])
                 params = np.array(tuple(map(float, elems[4:])))
@@ -186,6 +199,7 @@ def read_extrinsics_binary(path_to_model_file):
     images = {}
     with open(path_to_model_file, "rb") as fid:
         num_reg_images = read_next_bytes(fid, 8, "Q")[0]
+        
         for _ in range(num_reg_images):
             binary_image_properties = read_next_bytes(
                 fid, num_bytes=64, format_char_sequence="idddddddi")
@@ -205,6 +219,7 @@ def read_extrinsics_binary(path_to_model_file):
             xys = np.column_stack([tuple(map(float, x_y_id_s[0::3])),
                                    tuple(map(float, x_y_id_s[1::3]))])
             point3D_ids = np.array(tuple(map(int, x_y_id_s[2::3])))
+
             images[image_id] = Image(
                 id=image_id, qvec=qvec, tvec=tvec,
                 camera_id=camera_id, name=image_name,
@@ -267,6 +282,32 @@ def read_extrinsics_text(path):
                     id=image_id, qvec=qvec, tvec=tvec,
                     camera_id=camera_id, name=image_name,
                     xys=xys, point3D_ids=point3D_ids)
+    return images
+
+
+def read_extrinsics_binary_dof(path):
+    read_extrinsics_binary(path)
+
+
+def read_extrinsics_text_dof(path):
+    images = {}
+    with open(path, "r") as fid:
+        while True:
+            line = fid.readline()
+            if not line:
+                break
+            line = line.strip()
+            if len(line) > 0 and line[0] != "#":
+                elems = line.split()
+                image_id = int(elems[0])
+                qvec = np.array(tuple(map(float, elems[1:5])))
+                tvec = np.array(tuple(map(float, elems[5:8])))
+                camera_id = int(elems[8])
+                image_name = elems[9]
+                elems = fid.readline().split()
+                images[image_id] = ImageDoF(
+                    id=image_id, qvec=qvec, tvec=tvec,
+                    camera_id=camera_id, name=image_name)
     return images
 
 

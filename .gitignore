@@ -1,8 +1,4 @@
-*.pyc
-.vscode
-output
-build
-diff_rasterization/diff_rast.egg-info
-diff_rasterization/dist
-tensorboard_3d
-screenshots
+
+arguments/__pycache__/
+
+utils/__pycache__/
