@@ -12,3 +12,6 @@ do
         echo "[Failed 1] training process for scene_" + "${scn}"
     fi
 done
+
+python train.py -s scene_fire/train_full_byorder_85 -m scene_fire/train_full_byorder_85/output_lod0 --resolution 1
+python train.py -s HKUST_Piazza  -m HKUST_Piazza/output_lod0 --resolution 1

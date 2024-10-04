@@ -204,7 +204,7 @@ def write_cameras_binary(cameras, path_to_model_file):
     return cameras
 
 
-def read_images_text(path):
+def read_images_text(path, seq):
     """
     see: src/colmap/scene/reconstruction.cc
         void Reconstruction::ReadImagesText(const std::string& path)
@@ -224,6 +224,8 @@ def read_images_text(path):
                 tvec = np.array(tuple(map(float, elems[5:8])))
                 camera_id = int(elems[8])
                 image_name = elems[9]
+                print(image_name)
+                print(seq)
                 elems = fid.readline().split()
                 xys = np.column_stack(
                     [

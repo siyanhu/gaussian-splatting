@@ -48,6 +48,7 @@ class SceneInfoDoF(NamedTuple):
     nerf_normalization: dict
 
 def getNerfppNorm(cam_info):
+
     def get_center_and_diag(cam_centers):
         cam_centers = np.hstack(cam_centers)
         avg_cam_center = np.mean(cam_centers, axis=1, keepdims=True)
@@ -355,14 +356,15 @@ def readColmapSceneInfo(path, images, eval, llffhold=8):
     #     train_cam_infos = [c for idx, c in enumerate(cam_infos) if idx % llffhold != 0]
     #     test_cam_infos = [c for idx, c in enumerate(cam_infos) if idx % llffhold == 0]
     # else:
-    #     train_cam_infos = cam_infos
-    #     test_cam_infos = []
-    mainset_sample_rate = 2
-    train_cam_infos = [c for idx, c in enumerate(cam_infos) if idx % mainset_sample_rate != 0]
-    # train_cam_infos = cam_infos
-    test_cam_infos=[]
+    train_cam_infos = cam_infos
+    test_cam_infos = []
 
+    # mainset_sample_rate = 1
+    # train_cam_infos = [c for idx, c in enumerate(cam_infos) if idx % mainset_sample_rate != 0]
+    # # train_cam_infos = cam_infos
+    # test_cam_infos=[]
     nerf_normalization = getNerfppNorm(train_cam_infos)
+    print(nerf_normalization)
 
     ply_path = os.path.join(path, "sparse/0/points3D.ply")
     bin_path = os.path.join(path, "sparse/0/points3D.bin")

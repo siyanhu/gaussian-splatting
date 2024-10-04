@@ -23,7 +23,6 @@ def is_port_in_use(port: int) -> bool:
 
 host = "127.0.0.1"
 port=random.randint(10000, 30000)
-port = 12345
 
 for port_num in range(10000, 30000):
     if (is_port_in_use):

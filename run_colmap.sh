@@ -15,3 +15,11 @@ do
     colmap model_converter --input_path "${scn}"/sparse/0 --output_path "${scn}"/sparse --output_type TXT
     
 done
+
+    
+python train.py -s HKUST/sub1 -m HKUST/sub1/output && \
+python train.py -s HKUST/sub2 -m HKUST/sub2/output && \
+python train.py -s HKUST/sub3 -m HKUST/sub3/output && \
+python train.py -s HKUST/sub4 -m HKUST/sub4/output && \
+python train.py -s red3 -m red3/output && \
+python train.py -s HKUST/sub6 -m HKUST/sub6/output

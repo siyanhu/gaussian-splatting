@@ -3,15 +3,15 @@ import read_write_model as sfm_rw
 import re
 import random
 
-data_root = '/media/siyanlinux/Data/Hierarchical-Localization'
-target_root = '/home/siyanlinux/Documents/gaussian-splatting'
+data_root = '/media/siyanhu/T73/Hierarchical-Localization'
+target_root = '/home/siyanhu/Gits/gaussian-splatting'
 
 site_tag = '7scenes'
 
-# sfm_tag = 'sfm_superpoint+superglue+depth'
-# sample_tag = 'Train'
-sfm_tag = '7scenes_sfm_triangulated'
-sample_tag = 'Test'
+sfm_tag = 'sfm_pgt_new'
+sample_tag = 'Train'
+# sfm_tag = '7scenes_sfm_triangulated'
+# sample_tag = 'Test'
 sample_max_target = 'full'
 
 marker_pool = list(range(100))
@@ -34,6 +34,8 @@ def load_dof(site_dir, cut_off_count, mode='Train'):
         if fio.file_exist(dof_dir) == False:
             continue
 
+        if not (scene_tag == 'stairs'):
+            continue
         to_scene_dir = fio.createPath(fio.sep, [target_root, 'scene_' + scene_tag,
                                 '_'.join([sample_tag.lower(), str(sample_max_target), 'byorder', str(marker_label)])])
         print(to_scene_dir)
@@ -53,17 +55,19 @@ def load_dof(site_dir, cut_off_count, mode='Train'):
 
         dof_image_filepth = fio.createPath(fio.sep, [site_sfm_dir, scene_tag, sfm_tag], 'images.txt')
         if fio.file_exist(dof_image_filepth) == False:
-            r_= dof_image_filepth.replace('images.txt', 'images.bin')
+            r_= dof_image_filepth.replace('images.txt', 'images.txt')
             if fio.file_exist(r_):
-                bin_model = sfm_rw.read_images_binary(r_)
+                fio.copy_file(r_, dof_image_filepth)
+                bin_model = sfm_rw.read_images_text(r_, test_seq_tags)
                 sfm_rw.write_images_text(bin_model, dof_image_filepth)
 
         dof_camera_filepth = fio.createPath(fio.sep, [site_sfm_dir, scene_tag, sfm_tag], 'cameras.txt')
         if fio.file_exist(dof_camera_filepth) == False:
-            r_= dof_camera_filepth.replace('cameras.txt', 'cameras.bin')
+            r_= dof_camera_filepth.replace('cameras.txt', 'cameras.txt')
             if fio.file_exist(r_):
-                bin_model = sfm_rw.read_cameras_binary(r_)
-                sfm_rw.write_cameras_text(bin_model, dof_camera_filepth)
+                fio.copy_file(dof_camera_filepth, r_)
+                # bin_model = sfm_rw.read_cameras_binary(r_)
+                # sfm_rw.write_cameras_text(bin_model, dof_camera_filepth)
 
         if (fio.file_exist(dof_image_filepth) == False) or (fio.file_exist(dof_camera_filepth)==False):
             continue
