@@ -418,6 +418,10 @@ def readCamerasFromTransforms(path, transformsfile, white_background, extension=
             image_path = image_path.replace('.png', '')
             image_name = Path(cam_name).stem
             print(image_path)
+            if fio.file_exist(image_path) == False:
+                image_path = image_path + '.png'
+            if fio.file_exist(image_path) == False:
+                continue
             image = Image.open(image_path)
 
             im_data = np.array(image.convert("RGBA"))
@@ -457,9 +461,9 @@ def readNerfSyntheticInfo(path, white_background, eval, extension=".png"):
     print("Reading Test Transforms")
     test_cam_infos = readCamerasFromTransforms(path, "transforms_test.json", white_background, extension)
     
-    if not eval:
-        train_cam_infos.extend(test_cam_infos)
-        test_cam_infos = []
+    # if not eval:
+    # train_cam_infos.extend(test_cam_infos)
+    test_cam_infos = []
 
     nerf_normalization = getNerfppNorm(train_cam_infos)
 
